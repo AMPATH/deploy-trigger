@@ -1,0 +1,22 @@
+{
+  "name": "deploy-trigger",
+  "version": "1.0.0",
+  "description": "used to deploy already build files to test",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "deploy-trigger"
+  },
+  "keywords": [
+    "deploy",
+    "ng2-amrs"
+  ],
+  "author": "ampath devs",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^16.1.0"
+  }
+}
