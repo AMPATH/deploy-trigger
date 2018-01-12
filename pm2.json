@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "poc-ci",
+            "script": "/opt/poc-ci/server.js",
+            "watch": false
+        }
+    ]
+}

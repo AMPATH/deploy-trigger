@@ -7,7 +7,7 @@ const util = require('util'),
 // Create a server with a host and port
 const server = new Hapi.Server();
 server.connection({
-    host: 'localhost',
+    host: '0.0.0.0',
     port: 8000
 });
 
@@ -19,7 +19,7 @@ server.route({
 
         try {
             console.log(new Date()+ ' Deploying build...');
-            let deploy = spawn('sh', ['deploy-build.sh']);
+            let deploy = spawn('sh', ['/usr/local/bin/deploy-scripts/deploy.sh']);
 
             deploy.stdout.on('data', function (data) {    // register one or more handlers
                 console.log('stdout: ' + data);
@@ -35,7 +35,7 @@ server.route({
             reply('ok');
 
         } catch (error) {
-            console.error('An erro occured', error);
+            console.error('An error occured', error);
         }
 
     }

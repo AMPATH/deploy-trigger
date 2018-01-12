@@ -1,0 +1,21 @@
+---
+services:
+  poc-ci:
+    container_name: poc-ci
+    image: ampath/poc-ci
+    ports:
+      - "8000:8000"
+    network_mode: bridge
+    volumes:
+      - "/usr/local/bin/deploy-scripts:/usr/local/bin/deploy-scripts"
+      - "/Users/nickykibor/Development/deploy-trigger:/tmp/keys"
+      - "/tmp/test-builds:/tmp/test-builds"
+  poc-testbuilds:
+    container_name: poc-testbuilds
+    image: nginx
+    ports:
+      - "80:80"
+    network_mode: bridge
+    volumes:
+      - "/tmp/test-builds:/usr/share/nginx/html"
+version: "3"
