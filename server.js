@@ -41,6 +41,36 @@ server.route({
     }
 });
 
+// Add the route
+server.route({
+    method: 'GET',
+    path: '/deploy-etl',
+    handler: function (request, reply) {
+
+        try {
+            console.log(new Date()+ ' Deploying etl...');
+            let deploy = spawn('sh', ['deploy-etl.sh']);
+
+            deploy.stdout.on('data', function (data) {    // register one or more handlers
+                console.log('stdout: ' + data);
+            });
+
+            deploy.stderr.on('data', function (data) {
+                console.log('stderr: ' + data);
+            });
+
+            deploy.on('exit', function (code) {
+                console.log('child process exited with code ' + code);
+            });
+            reply('ok');
+
+        } catch (error) {
+            console.error('An erro occured', error);
+        }
+
+    }
+});
+
 // Start the server
 server.start((err) => {
 
